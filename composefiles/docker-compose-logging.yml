@@ -13,6 +13,9 @@ services:
             com.docker.service.name: "elasticsearch"
         deploy:
             mode: replicated
+            placement:
+                constraints:
+                - "node.role==manager"
             update_config:
                 parallelism: 1
                 delay: 60s
@@ -38,6 +41,9 @@ services:
             com.docker.service.name: "curator"
         deploy:
             mode: replicated
+            placement:
+                constraints:
+                - "node.role==manager"
             update_config:
                 parallelism: 1
                 delay: 60s
@@ -49,6 +55,7 @@ services:
                 com.docker.service.name: "curator"                   
 
     logstash:
+
         image: logstash:7.6.2
         depends_on:
             - elasticsearch
@@ -63,6 +70,9 @@ services:
             com.docker.service.name: "logstash"
         deploy:
             mode: replicated
+            placement:
+                constraints:
+                - "node.role==manager"
             update_config:
                 parallelism: 1
                 delay: 60s
@@ -88,6 +98,9 @@ services:
             com.docker.service.name: "kibana"
         deploy:
             mode: replicated
+            placement:
+                constraints:
+                - "node.role==manager"
             update_config:
                 parallelism: 1
                 delay: 60s
