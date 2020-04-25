@@ -11,6 +11,7 @@ services:
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "elasticsearch"
+        command: elasticsearch -Etransport.host=127.0.0.1 -Ebootstrap.memory_lock=false
         deploy:
             mode: replicated
             placement:
