@@ -166,7 +166,12 @@ services:
             - logging
         volumes:
             - /root/docker-swarm-monitoring/dockerdata/grafana:/var/lib/grafana
-        command: -e "GF_SERVER_ROOT_URL=http://grafana.local.com GF_SECURITY_ADMIN_PASSWORD=admin PROMETHEUS_ENDPOINT=http://prometheus:9090 ELASTICSEARCH_ENDPOINT=http://elasticsearch:9200"
+        # command: -e "GF_SERVER_ROOT_URL=http://grafana.local.com GF_SECURITY_ADMIN_PASSWORD=admin PROMETHEUS_ENDPOINT=http://prometheus:9090 ELASTICSEARCH_ENDPOINT=http://elasticsearch:9200"
+        environment: 
+            GF_SERVER_ROOT_URL: http://grafana.local.com
+            GF_SECURITY_ADMIN_PASSWORD: admin
+            PROMETHEUS_ENDPOINT: http://prometheus:9090
+            ELASTICSEARCH_ENDPOINT: http://elasticsearch:9200
         labels:
             com.docker.stack.namespace: "monitoring"
             com.docker.service.name: "grafana"
