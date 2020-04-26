@@ -56,7 +56,7 @@ groups:
 
   - alert: high_load_on_node
     expr: node_load5 > 2
-    for 3m
+    for: 3m
     annotations:
         summary: "HIGH LOAD WARINING: NODE '{{ $labels.host }}'"
         description: "{{ $labels.host}} is under high load. Load is {{ humanize $value }}."
