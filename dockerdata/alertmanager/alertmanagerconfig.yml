@@ -20,10 +20,10 @@ receivers:
         channel: '#<CHANNEL_NAME>'
         text: '{{ .CommonAnnotations.summary }} ---> {{ .CommonAnnotations.description }}'
 
-      - name: 'logstash'
-        webhook_configs:
-          # Whether or not to notify about resolved alerts.
-          - send_resolved: true
-            # The endpoint to send HTTP POST requests to.
-            url: "http://logstash:8080/"
+  - name: 'logstash'
+    webhook_configs:
+      # Whether or not to notify about resolved alerts.
+      - send_resolved: true
+        # The endpoint to send HTTP POST requests to.
+        url: "http://logstash:8080/"
   
