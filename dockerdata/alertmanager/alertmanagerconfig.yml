@@ -15,7 +15,7 @@ route:
 receivers:
   - name: 'slack'
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
+      - api_url: 'https://hooks.slack.com/services/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'
         username: 'Prometheus - Alerter'
         channel: '#website'
         send_resolved: true

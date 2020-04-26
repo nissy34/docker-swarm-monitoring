@@ -19,3 +19,5 @@ cd ..
 
 docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-compose-logging.yml logging
 docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-compose-monitoring.yml monitoring
+docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-compose-portainer.yml portainer
+
