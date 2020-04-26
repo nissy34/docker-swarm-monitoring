@@ -1,9 +1,13 @@
 docker network create -d overlay monitoring
 docker network create -d overlay logging
 
+docker stack rm logging monitoring
+
+rm -r docker-swarm-monitoring/
+git clone https://github.com/nissy34/docker-swarm-monitoring.git
+
 chmod -R 777 /root/docker-swarm-monitoring/dockerdata
 
-docker stack rm logging monitoring
 
 cd docker-swarm-monitoring
 

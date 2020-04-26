@@ -1,5 +1,5 @@
 groups:
-- name: nodes
+- name: tasks
   rules:
 
   - alert: high_cpu_usage_on_container

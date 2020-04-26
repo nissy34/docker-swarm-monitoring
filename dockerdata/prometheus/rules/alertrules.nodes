@@ -46,5 +46,37 @@ groups:
       summary: "test robin msteams docker"
       description: "jaja lekkah"
 
+  - alert: monitoring_service_down
+    expr: up == 0
+    for 5m
+    annotations:
+        summary: "MONITORING SERVICE DOWN WARNING: NODE '{{ $labels.host }}'",
+        description: "The monitoring service '{{ $labels.job }}' is down.",
+
+
+  - alert: high_load_on_node
+    expr: node_load5 > 2
+    for 3m
+    annotations:
+        summary: "HIGH LOAD WARINING: NODE '{{ $labels.host }}'",
+        description: "{{ $labels.host}} is under high load. Load is {{ humanize $value }}.",
+
+
+  - alert: node_running_out_of_memory
+    expr: node_memory_MemAvailable < 1500000000
+    for 5m
+    annotations:
+        summary: "LOW MEMORY WARING: NODE '{{ $labels.host }}'",
+        description: "Less than 1.5GB of free memory. Free memory at {{ humanize $value }} GB.",
+
+
+  - alert: node_restarted
+    expr: node_time - node_boot_time < 300
+    for 1m
+    labels: 
+      severity: "Warning" 
+    annotations:
+        summary: "NODE RESTARTED WARNING: NODE '{{ $labels.host }}'",
+        description: "Warning: Node '{{ $labels.host }}' was restarted at {{ $value }} seconds ago.",
       
 
