@@ -48,7 +48,7 @@ groups:
 
   - alert: monitoring_service_down
     expr: up == 0
-    for 5m
+    for: 5m
     annotations:
         summary: "MONITORING SERVICE DOWN WARNING: NODE '{{ $labels.host }}'"
         description: "The monitoring service '{{ $labels.job }}' is down."
@@ -64,7 +64,7 @@ groups:
 
   - alert: node_running_out_of_memory
     expr: node_memory_MemAvailable < 1500000000
-    for 5m
+    for: 5m
     annotations:
         summary: "LOW MEMORY WARING: NODE '{{ $labels.host }}'"
         description: "Less than 1.5GB of free memory. Free memory at {{ humanize $value }} GB."
@@ -72,7 +72,7 @@ groups:
 
   - alert: node_restarted
     expr: node_time - node_boot_time < 300
-    for 1m
+    for: 1m
     labels: 
       severity: "Warning" 
     annotations:
