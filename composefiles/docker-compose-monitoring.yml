@@ -97,6 +97,7 @@ services:
             - "9093:9093"
         networks:
             - monitoring
+            - logging
         volumes:
             - /root/docker-swarm-monitoring/dockerdata/alertmanager/alertmanagerconfig.yml:/etc/alertmanager/alertmanagerconfig.yml
             - /root/docker-swarm-monitoring/dockerdata/alertmanager/data:/etc/alertmanager/data
