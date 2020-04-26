@@ -62,10 +62,14 @@ services:
             - elasticsearch
         ports:
             - "12201:12201/udp"         
-            - "8080:8082"
+            - "8080:8080"
+        volumes:
+            - /root/docker-swarm-monitoring/dockerdata/logstash/config:/config
+            - /root/docker-swarm-monitoring/dockerdata/logstash/patterns:/opt/logstash/extra_patterns
         networks:
             - logging
-        command: -e "input { gelf {} } output { elasticsearch { hosts => ['elasticsearch']} stdout {} }"
+        # command: -e "input { gelf {} } output { elasticsearch { hosts => ['elasticsearch']} stdout {} }"
+        command: logstash -f /config
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "logstash"
