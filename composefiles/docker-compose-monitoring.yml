@@ -38,7 +38,7 @@ services:
             - "8081:8080"
         networks:
             - monitoring
-        command: [
+        args: [
             '--docker_only'
         ]
         volumes:
