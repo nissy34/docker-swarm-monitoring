@@ -136,8 +136,8 @@ services:
             - ELASTICSEARCH_HOST=elasticsearch
             - ELASTALERT_SUPERVISOR_CONF=/opt/config/elastalert_supervisord.conf
         volumes:
-            - ../elastalert/config:/opt/config
-            - ../elastalert/rules:/opt/rules
+            - ../dockerconfig/elastalert/config:/opt/config
+            - ../dockerconfig/elastalert/rules:/opt/rules
             - ../../dockerdata/elastalert/logs:/opt/logs
         labels:
             com.docker.stack.namespace: "monitoring"
