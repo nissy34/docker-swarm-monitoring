@@ -7,7 +7,7 @@ services:
         networks:
             - logging
         volumes:
-            - ../../dockerdata/docker-swarm-monitoring/dockerdata/elasticsearch/data:/usr/share/elasticsearch/data
+            - ../../dockerdata/elasticsearch/data:/usr/share/elasticsearch/data
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "elasticsearch"
@@ -36,7 +36,7 @@ services:
             - ELASTICSEARCH_PORT=9200
             - INTERVAL_IN_HOURS=12
         volumes:
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/curator:/var/curator
+            - ../docker-swarm-monitoring/dockerconfig/curator:/var/curator
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "curator"
@@ -64,8 +64,8 @@ services:
             - "12201:12201/udp"         
             - "8080:8080"
         volumes:
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/logstash/config:/config
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/logstash/patterns:/opt/logstash/extra_patterns
+            - ../dockerconfig/logstash/config:/config
+            - ../dockerconfig/logstash/patterns:/opt/logstash/extra_patterns
         networks:
             - logging
         # command: -e "input { gelf {} } output { elasticsearch { hosts => ['elasticsearch']} stdout {} }"

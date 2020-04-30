@@ -99,8 +99,8 @@ services:
             - monitoring
             - logging
         volumes:
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/alertmanager/alertmanagerconfig.yml:/etc/alertmanager/alertmanagerconfig.yml
-            - ../../dockerdata/docker-swarm-monitoring/dockerdata/alertmanager/data:/etc/alertmanager/data
+            - ../dockerconfig/alertmanager/alertmanagerconfig.yml:/etc/alertmanager/alertmanagerconfig.yml
+            - ../../dockerdata/alertmanager/data:/etc/alertmanager/data
         command: [--config.file=/etc/alertmanager/alertmanagerconfig.yml,--storage.path=/etc/alertmanager/data]
         labels:
             com.docker.stack.namespace: "monitoring"
@@ -136,9 +136,9 @@ services:
             - ELASTICSEARCH_HOST=elasticsearch
             - ELASTALERT_SUPERVISOR_CONF=/opt/config/elastalert_supervisord.conf
         volumes:
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/elastalert/config:/opt/config
-            - ../dockerconfig/docker-swarm-monitoring/dockerdata/elastalert/rules:/opt/rules
-            - ../../dockerdata/docker-swarm-monitoring/dockerdata/elastalert/logs:/opt/logs
+            - ../elastalert/config:/opt/config
+            - ../elastalert/rules:/opt/rules
+            - ../../dockerdata/elastalert/logs:/opt/logs
         labels:
             com.docker.stack.namespace: "monitoring"
             com.docker.service.name: "elastalert"
@@ -166,7 +166,7 @@ services:
             - monitoring
             - logging
         volumes:
-            - ../../dockerdata/docker-swarm-monitoring/dockerdata/grafana:/var/lib/grafana
+            - ../../dockerdata/grafana:/var/lib/grafana
         # command: -e "GF_SERVER_ROOT_URL=http://grafana.local.com GF_SECURITY_ADMIN_PASSWORD=admin PROMETHEUS_ENDPOINT=http://prometheus:9090 ELASTICSEARCH_ENDPOINT=http://elasticsearch:9200"
         environment: 
             GF_SERVER_ROOT_URL: http://grafana.local.com
