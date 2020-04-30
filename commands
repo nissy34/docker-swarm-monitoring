@@ -1,12 +1,20 @@
 docker network create -d overlay monitoring
 docker network create -d overlay logging
 
-docker stack rm logging monitoring
+docker stack rm logging monitoring portainer
 
-rm -r docker-swarm-monitoring/
+
+
 git clone https://github.com/nissy34/docker-swarm-monitoring.git
 
-chmod -R 777 ./docker-swarm-monitoring/dockerdata
+sudo rm -r dockerdata
+
+mkdir -p dockerdata/alertmanager/data
+mkdir -p dockerdata/elastalert/logs
+mkdir -p dockerdata/elasticsearch/data
+mkdir -p dockerdata/grafana
+mkdir -p dockerdata/prometheus/data
+chmod -R 777 dockerdata
 
 
 cd docker-swarm-monitoring
