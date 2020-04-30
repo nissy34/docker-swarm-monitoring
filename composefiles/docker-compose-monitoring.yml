@@ -38,10 +38,7 @@ services:
             - "8081:8080"
         networks:
             - monitoring
-        args: [
-            '--docker_only',
-            "-logtostderr"
-        ]
+        command: --disable_metrics=sched,percpu,diskIO,disk,network,tcp,advtcp,udp,process --docker-only
         volumes:
             - /:/rootfs:ro
             - /var/run:/var/run:rw
