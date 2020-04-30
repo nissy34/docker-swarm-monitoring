@@ -1,0 +1,5 @@
+FROM traefik:chevrotin
+
+COPY traefik/myca.crt /usr/local/share/ca-certificates/myca.crt
+
+RUN update-ca-certificates
