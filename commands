@@ -6,7 +6,7 @@ docker stack rm logging monitoring
 rm -r docker-swarm-monitoring/
 git clone https://github.com/nissy34/docker-swarm-monitoring.git
 
-chmod -R 777 /root/docker-swarm-monitoring/dockerdata
+chmod -R 777 ./docker-swarm-monitoring/dockerdata
 
 
 cd docker-swarm-monitoring
@@ -21,3 +21,9 @@ docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-c
 docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-compose-monitoring.yml monitoring
 docker stack deploy --compose-file docker-swarm-monitoring/composefiles/docker-compose-portainer.yml portainer
 
+
+
+
+
+
+docker run --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201 --log-opt tag="pingi_badinki" alpine ping 8.8.8.8

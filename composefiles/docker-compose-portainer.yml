@@ -27,6 +27,7 @@ services:
       mode: replicated
       replicas: 1
       placement:
+        # constraints: [node.labels.a==1]
         constraints: [node.role == manager]
 
 networks:
