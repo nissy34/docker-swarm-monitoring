@@ -7,7 +7,7 @@ services:
         networks:
             - logging
         volumes:
-            - ../dockerdata/docker-swarm-monitoring/dockerdata/elasticsearch/data:/usr/share/elasticsearch/data
+            - ../../dockerdata/docker-swarm-monitoring/dockerdata/elasticsearch/data:/usr/share/elasticsearch/data
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "elasticsearch"

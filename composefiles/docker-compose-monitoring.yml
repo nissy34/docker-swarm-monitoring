@@ -9,7 +9,7 @@ services:
         networks:
             - monitoring
         volumes:
-            - ../dockerdata/docker-swarm-monitoring/dockerdata/prometheus/data:/prometheus
+            - ../../dockerdata/docker-swarm-monitoring/dockerdata/prometheus/data:/prometheus
             - ../dockerconfig/docker-swarm-monitoring/dockerdata/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
             - ../dockerconfig/docker-swarm-monitoring/dockerdata/prometheus/rules:/etc/prometheus-rules
         command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/etc/prometheus/console_libraries --web.console.templates=/etc/prometheus/consoles"
@@ -100,7 +100,7 @@ services:
             - logging
         volumes:
             - ../dockerconfig/docker-swarm-monitoring/dockerdata/alertmanager/alertmanagerconfig.yml:/etc/alertmanager/alertmanagerconfig.yml
-            - ../dockerdata/docker-swarm-monitoring/dockerdata/alertmanager/data:/etc/alertmanager/data
+            - ../../dockerdata/docker-swarm-monitoring/dockerdata/alertmanager/data:/etc/alertmanager/data
         command: [--config.file=/etc/alertmanager/alertmanagerconfig.yml,--storage.path=/etc/alertmanager/data]
         labels:
             com.docker.stack.namespace: "monitoring"
@@ -138,7 +138,7 @@ services:
         volumes:
             - ../dockerconfig/docker-swarm-monitoring/dockerdata/elastalert/config:/opt/config
             - ../dockerconfig/docker-swarm-monitoring/dockerdata/elastalert/rules:/opt/rules
-            - ../dockerdata/docker-swarm-monitoring/dockerdata/elastalert/logs:/opt/logs
+            - ../../dockerdata/docker-swarm-monitoring/dockerdata/elastalert/logs:/opt/logs
         labels:
             com.docker.stack.namespace: "monitoring"
             com.docker.service.name: "elastalert"
@@ -166,7 +166,7 @@ services:
             - monitoring
             - logging
         volumes:
-            - ../dockerdata/docker-swarm-monitoring/dockerdata/grafana:/var/lib/grafana
+            - ../../dockerdata/docker-swarm-monitoring/dockerdata/grafana:/var/lib/grafana
         # command: -e "GF_SERVER_ROOT_URL=http://grafana.local.com GF_SECURITY_ADMIN_PASSWORD=admin PROMETHEUS_ENDPOINT=http://prometheus:9090 ELASTICSEARCH_ENDPOINT=http://elasticsearch:9200"
         environment: 
             GF_SERVER_ROOT_URL: http://grafana.local.com
