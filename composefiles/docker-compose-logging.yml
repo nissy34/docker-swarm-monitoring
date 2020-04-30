@@ -36,7 +36,7 @@ services:
             - ELASTICSEARCH_PORT=9200
             - INTERVAL_IN_HOURS=12
         volumes:
-            - ../docker-swarm-monitoring/dockerconfig/curator:/var/curator
+            - ../dockerconfig/curator:/var/curator
         labels:
             com.docker.stack.namespace: "logging"
             com.docker.service.name: "curator"
