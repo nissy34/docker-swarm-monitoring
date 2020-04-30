@@ -39,7 +39,8 @@ services:
         networks:
             - monitoring
         args: [
-            '--docker_only'
+            '--docker_only',
+            "-logtostderr"
         ]
         volumes:
             - /:/rootfs:ro
